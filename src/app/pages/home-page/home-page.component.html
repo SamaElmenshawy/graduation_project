@@ -1,1 +1,26 @@
-<p>home-page works!</p>
+
+<div class="p-4 " style="color:blue;  "><h1>products</h1></div>
+
+<div class="row p-4">
+  <div class="col-12 col-md-6 col-lg-4">
+    <select class="form-select" (change)="filtercategory($event)">
+      <option selected value="all" >All</option>
+      <option  *ngFor=" let option of category">{{option}}</option>
+     
+    </select>
+  </div>
+</div>
+
+
+<div class="row g-4 p-4">
+    <div *ngFor="let product of products" class="col-6 col-md-4 col-lg-3">
+      <app-card
+        [img]="product.image"
+        [title]="product.title"
+        [price]="product.price"
+        [id]="product.id"
+      ></app-card>
+    </div>
+  </div>
+  
+  

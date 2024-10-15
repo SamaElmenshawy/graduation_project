@@ -1,1 +1,10 @@
-<p>card works!</p>
+<div class="card ">
+    <img style="height: 250px" [src]="img" class="card-img-top rounded-circle" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ title }} - <span class="text-primary">{{ price }}$</span>
+      </h5>
+      <a [routerLink]="['/', id]" class="btn btn-primary">Check The Product</a>
+    </div>
+  </div>
+  
