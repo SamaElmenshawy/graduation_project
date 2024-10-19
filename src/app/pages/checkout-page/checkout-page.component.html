@@ -1,1 +1,229 @@
-<p>checkout-page works!</p>
+<form (ngSubmit)="submit()" #form="ngForm">
+    <article class="container">
+      <div class="content-body">
+        <h5 class="card-title">Checkout</h5>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label class="form-label">first name</label>
+            <input
+              #firstnameInput="ngModel"
+              required=""
+              [(ngModel)]="firstname"
+              name="firstname"
+              type="text"
+              class="form-control"
+              placeholder="first name"
+            />
+          </div>
+  
+          <!-- col end.// -->
+  
+          <div class="col-6">
+            <label class="form-label">last name</label>
+            <input
+              [(ngModel)]="lastname"
+              name="lastname"
+              required=""
+              [(ngModel)]="lastname"
+              type="text"
+              class="form-control"
+              placeholder="last name"
+            />
+          </div>
+  
+          <!-- col end.// -->
+  
+          <div class="col-6 mb-3">
+            <label class="form-label">phone </label>
+            <input
+              name="phone"
+              [(ngModel)]="phone"
+              type="text"
+              class="form-control"
+              placeholder="your phone number"
+            />
+          </div>
+          <!-- col end.// -->
+  
+          <div class="col-6 mb-3">
+            <label class="form-label">email </label>
+            <input
+              name="email"
+              [(ngModel)]="email"
+              type="text"
+              class="form-control"
+              placeholder="example@gmail.com"
+            />
+          </div>
+          <!-- col end.// -->
+        </div>
+        <!-- row.// -->
+  
+        <hr class="my-4" />
+  
+        <h5 class="card-title p-2">Shipping info</h5>
+  
+        <div class="row mb-3">
+          <div class="col-lg-4 mb-3">
+            <div class="box box-check">
+              <label class="form-check">
+                <input
+                  name=""
+                  class="form-check-input"
+                  type="radio"
+                  name="dostavka"
+                  checked
+                />
+                <b class="border-oncheck"></b>
+                <span class="form-check-label">
+                  Express delivery <br />
+                  <small class="text-muted">3-4 days via Fedex </small>
+                </span>
+              </label>
+            </div>
+          </div>
+          <!-- col end.// -->
+          <div class="col-lg-4 mb-3">
+            <div class="box box-check">
+              <label class="form-check">
+                <input class="form-check-input" type="radio" name="dostavka" />
+                <b class="border-oncheck"></b>
+                <span class="form-check-label">
+                  Post office <br />
+                  <small class="text-muted">20-30 days via post</small>
+                </span>
+              </label>
+            </div>
+          </div>
+          <!-- col end.// -->
+          <div class="col-lg-4 mb-3">
+            <div class="box box-check">
+              <label class="form-check">
+                <input class="form-check-input" type="radio" name="dostavka" />
+                <b class="border-oncheck"></b>
+                <span class="form-check-label">
+                  Self pick-up <br />
+                  <small class="text-muted"> Come to our shop </small>
+                </span>
+              </label>
+            </div>
+          </div>
+          <!-- col end.// -->
+        </div>
+        <!-- row end.// -->
+  
+        <div class="row">
+          <div class="col-sm-8 mb-3">
+            <label for="" class="form-label">address </label>
+            <input
+              name="address"
+              type="text"
+              [(ngModel)]="address"
+              class="form-control"
+              placeholder="your address"
+            />
+          </div>
+          <!-- col end.// -->
+  
+          <div class="col-sm-4 mb-3">
+            <label for="" class="form-label">City*</label>
+            <select
+              name="city"
+              [(ngModel)]="selectedCity"
+              class="form-select"
+              id="city*"
+              aria-label="City*"
+            >
+              <option value="1">New York</option>
+              <option value="2">Moscow</option>
+              <option value="3">Samarqand</option>
+            </select>
+          </div>
+          <!-- col end.// -->
+  
+          <div class="col-sm-4 mb-3">
+            <label for="" class="form-label">House</label>
+            <input
+              name="house"
+              type="text"
+              [(ngModel)]="house"
+              class="form-control"
+              placeholder="your house"
+            />
+          </div>
+          <!-- col end.// -->
+  
+          <div class="col-sm-4 col-6 mb-3">
+            <label for="" class="form-label">Postal code</label>
+            <input
+              name="postalCode"
+              type="text"
+              [(ngModel)]="postalCode"
+              class="form-control"
+              placeholder=""
+            />
+          </div>
+          <!-- col end.// -->
+  
+          <div class="col-sm-4 col-6 mb-3">
+            <label for="" class="form-label">Zip</label>
+            <input
+              name="zip"
+              type="text"
+              [(ngModel)]="zip"
+              class="form-control"
+              placeholder=""
+            />
+          </div>
+          <!-- col end.// -->
+        </div>
+        <!-- row.// -->
+  
+        <label class="form-check mb-4">
+          <input
+            name="saveAddress"
+            class="form-check-input"
+            [(ngModel)]="saveAddress"
+            type="checkbox"
+            value=""
+          />
+          <span class="form-check-label"> Save this address </span>
+        </label>
+  
+        <!-- col end.// -->
+      </div>
+      <!-- card-body end.// -->
+    </article>
+    <!-- card end.// -->
+    <!-- ============== COMPONENT CHECKOUT .// =============== -->
+  
+    <!-- col.// -->
+    <aside class="col-xl-4 col-lg-4">
+      <!-- ============== COMPONENT SUMMARY =============== -->
+      <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
+       
+        <dl class="dlist-align">
+          <dt>Total: {{ total }}$</dt>
+          <dd class="text-end">
+            <strong class="text-dark"></strong>
+          </dd>
+        </dl>
+        <div class="float-end">
+          <button class="btn btn-light m-2" [routerLink]="['/']">Cancel</button>
+          <button class="btn btn-success" (click)="submit()">submit</button>
+        </div>
+        <hr />
+      </article>
+    </aside>
+    <div
+      *ngIf="message"
+      class="alert m-5"
+      [ngClass]="{
+        'alert-success': message.includes('saved'),
+        'alert-danger': message.includes('required')
+      }"
+    >
+      {{ message }}
+    </div>
+  </form>
+  

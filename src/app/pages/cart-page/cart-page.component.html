@@ -1,1 +1,66 @@
-<p>cart-page works!</p>
+<div class="container">
+    <h1>Shopping cart</h1>
+    <div class="border border-black p-4 m-4">
+      <div class="d-flex">
+        <div class="p-2 w-100">
+          <h4 class="text-black">you have {{ cart.length }} item in the cart</h4>
+        </div>
+        <div class="p-2 flex-shrink-1">
+          <button
+            type="button"
+            class="btn btn-outline-danger p-6"
+            (click)="clearcart()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Pic</th>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+  
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of cart; let index = index">
+            <th scope="row">
+              <img style="height: 80px" [src]="product.image" alt="" />
+            </th>
+            <td>
+              {{ product.title }}
+            </td>
+            <td>
+              {{ product.qty }}
+            </td>
+            <td>{{ product.price }}$</td>
+            <td>{{ total }}$</td>
+  
+            <td>
+              <button class="btn" (click)="addamount(index)">
+                <i class="bi bi-plus-circle-fill"></i>
+              </button>
+              <button class="btn mx-2" (click)="minusamount(index)">
+                <i class="bi bi-dash-circle-fill"></i>
+              </button>
+              <button class="btn btn-danger m-2" (click)="delamount(index)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <h4>Total :{{ total }} $</h4>
+        <a class="btn btn-success m-3" [routerLink]="['/checkout']">Checkout</a>
+        <a class="btn btn-primary" aria-current="page" [routerLink]="['/']">add more</a>
+
+      </div>
+    </div>
+  </div>
+  
